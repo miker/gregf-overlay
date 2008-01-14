@@ -1,0 +1,785 @@
+# ChangeLog for net-news/liferea
+# Copyright 2000-2007 Gentoo Foundation; Distributed under the GPL v2
+# $Header: /var/cvsroot/gentoo-x86/net-news/liferea/ChangeLog,v 1.113 2007/08/02 14:27:09 dang Exp $
+
+  02 Aug 2007; Daniel Gryniewicz <dang@gentoo.org>
+  -files/liferea-1.0.16-seamonkey.diff, -liferea-1.0.16.ebuild,
+  -liferea-1.2.16.ebuild, -liferea-1.2.17.ebuild:
+  Remove old versions
+
+  02 Aug 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  liferea-1.0.16.ebuild, liferea-1.0.24.ebuild:
+  correct dbus deps (bug #187369)
+
+*liferea-1.2.20 (28 Jul 2007)
+
+  28 Jul 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.20.ebuild:
+  Bump to 1.2.20
+  	* Fixes SF #1741243 which caused endless loops on
+  	  LiveJournal authentication.
+  	* Added Brazilian-Portugese localized feed list.
+  	  (Og Maciel)
+  	* Update of Spanish translation by Luis Rodrigo
+  	  Gallardo Cruz
+  	* Fixes a compilation problem on systems without
+  	  getaddrinfo (reported by Gilles Gravier)
+  	* Fixes a bug in the networking code (Hubert Figuiere)
+
+  08 Jul 2007; Michael Sterrett <mr_bones_@gentoo.org>
+  liferea-1.0.16.ebuild, liferea-1.0.24.ebuild:
+  remove reference to old, removed dbus (bug #183696)
+
+  05 Jul 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2.13.ebuild,
+  -liferea-1.2.14.ebuild, -liferea-1.2.15b.ebuild:
+  Clean up some old versions
+
+*liferea-1.2.18 (05 Jul 2007)
+
+  05 Jul 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.18.ebuild:
+  Bump to 1.2.18
+  	* Fixes some memory leaks (Hubert Figuiere)
+  	* Improved manpage (Emilo Pozuelo Monfort)
+  	* Starter script support for $DEBUGGER (Hubert Figuiere)
+  	* Fixed XulRunner library root compilation parameter
+  	  (Hubert Figuiere)
+  	* Making the tray icon transparent again when the
+  	  "show new count" option is disabled.
+
+  03 Jul 2007; Roy Marples <uberlord@gentoo.org> liferea-1.2.17.ebuild:
+  Added ~x86-fbsd keyword.
+
+*liferea-1.2.17 (18 Jun 2007)
+
+  18 Jun 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.17.ebuild:
+  Bump to 1.2.17
+  	* Fixes some memory leaks (Hubert Figuiere)
+  	* Fixes SF #1731789 "Open Feed" in detailed libnotify
+  	  popup view did not work (reported by vfiend)
+  	* Fixes SF #1736409 HTTP Digest authentication handling 
+  	  to support spaces in quoted value strings.
+  	* Ignores GNUTLS_E_UNEXPECTED_PACKET_LENGTH (-9)
+  	  errors which seems to happen with GMail feeds.
+  	* New Czech translation from Martin Picek
+  	* New Basque default feed list from Iñaki Larrañaga Murgoitio
+
+*liferea-1.2.16 (05 Jun 2007)
+
+  05 Jun 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2.15.ebuild,
+  +liferea-1.2.16.ebuild:
+  Bump to 1.2.16
+  	* Major code reorganisation to minimize the number
+  	  of gettimeofday() calls which caused a lot of CPU
+  	  activity and wakeups on laptops.
+  	* Fixes "jumpy" behaviour of the HTML view item menu
+  	  in three pane mode. Now the menu is visible 
+  	  immediately on rendering.
+  	* New Basque translation from Iñaki Larrañaga Murgoitio
+
+*liferea-1.2.15b (20 May 2007)
+
+  20 May 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.15b.ebuild:
+  Bump to 1.2.15b
+
+*liferea-1.2.15 (17 May 2007)
+
+  17 May 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2.10c.ebuild,
+  -liferea-1.2.12b.ebuild, +liferea-1.2.15.ebuild:
+  Bump to 1.2.15
+  	* Better update result processing timer, should cause
+  	  less CPU usage. (patch from Arjan van de Ven)
+  	* Increased security: disallowing clicking on file://
+  	  links in the rendering widget, as well as preventing
+  	  from opening such links using the context menu.
+  	* Fixes unresolved symbol in LUA binding.
+  	  (SF #1720462, reported by Jonathan Cristoforetti)
+  	* Fixes broken base URL when selecting items in 3 pane
+  	  mode from folders.
+
+*liferea-1.2.14 (15 May 2007)
+
+  15 May 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.14.ebuild:
+  Bump to 1.2.14
+  	* Adds network execution priviledges for the XSPF flash applet
+  	  Liferea uses to play MP3 enclosures (fix suggested by Tsukasa)
+  	* Allowing HTTP headers with tab character at line start.
+  	  (suggested by Joern P. Meier)
+  	* Fixes a crash when updating the Atom 0.3 GMail feed 
+  	  (reported by Paul Keuseman)
+  	* Update of Japanese translation (Takeshi AIHANA)
+
+  15 May 2007; Thilo Bangert <bangert@gentoo.org> metadata.xml:
+  add <herd>no-herd</herd>
+
+  14 May 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2.8.ebuild,
+  -liferea-1.2.12.ebuild:
+  Remove old versions
+
+  13 May 2007; Steve Dibb <beandog@gentoo.org> liferea-1.0.24.ebuild:
+  amd64 stable
+
+  12 May 2007; Luca Longinotti <chtekk@gentoo.org> Manifest:
+  Regen digest to remove unused entry.
+
+*liferea-1.2.13 (29 Apr 2007)
+
+  29 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.13.ebuild:
+  Bump to 1.2.13
+  	* Fixes a significant memory leak when dropping items
+  	  from cache reported by several users.
+  	* Changes the new item counting to a simpler counting
+  	  statistic so that on subsequent updates of the same
+  	  feed might present a lower new item number, but which
+  	  is a bit faster.
+  	* Added new Catalan default feed list (Gil Forcada)
+
+*liferea-1.2.12b (28 Apr 2007)
+
+  28 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2.7.ebuild,
+  -liferea-1.2.10.ebuild, +liferea-1.2.12b.ebuild:
+  Bump to 1.2.12b
+
+  23 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2.7.ebuild,
+  -liferea-1.2.10.ebuild:
+  Remove some old versions
+
+*liferea-1.2.12 (23 Apr 2007)
+
+  23 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.12.ebuild:
+  Bump to 1.2.12
+  	* Workaround for Gentoo bug #116797 (reported by Maxim Britov)
+  	* Fixes possible crash when removing folders with unread items.
+  	* Updated Spanish translation (Luis Rodrigo Gallardo Cruz)
+  	* Added Catalan translation (Gil Forcada)
+  Add networkmanager USE flag
+
+*liferea-1.2.10c (15 Apr 2007)
+
+  15 Apr 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.10c.ebuild:
+  Bump to 1.2.10c
+
+*liferea-1.2.10 (28 Mar 2007)
+
+  28 Mar 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.10.ebuild:
+  Bump to 1.2.10
+  	* Added rendering of "creator" metadata attribute.
+  	  (patch from Khaled Hosny)
+  	* Fixes crash when removing folder with unread items.
+  	  (SF #1685868, reported by Tigro)
+  	* Fixes links opening up in the configured external browser
+  	  for feeds with enabled "auto load link" setting when the
+  	  "load links in internal browser" preference is not set.
+  	* Fixes another negative unread count problem.
+  	  (reported by pochu)
+  	* Fixes negative unread count problems introduced with
+  	  the last release.
+  	* Lowered memory usage by correctly unloading feeds from 
+  	  memory after unselecting recursively displayed folders.
+  	* Improved performance by avoiding unnecessary folder load 
+  	  recursions.
+  	* New preference option that allows enabling the display
+  	  of the number of new items in the tray icon.
+  	* New preference option that allows to disable minimizing
+  	  to tray when closing the main window.
+  	* Adding DBUS introspection (patch by moonz)
+
+  24 Mar 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2.4.ebuild,
+  -liferea-1.2.5.ebuild, -liferea-1.2.6b.ebuild:
+  Remove old versions
+
+*liferea-1.2.8 (15 Mar 2007)
+
+  15 Mar 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.8.ebuild:
+  Bump to 1.2.8
+  	* Adds a DBUS ping function that is used by the 
+  	  liferea-add-feed script to check if the program is running.
+  	* The liferea-add-feed script now starts Liferea if necessary.
+  	  (solution by intangible/tsukasa)
+  	* Added 1x1 pixel filter to adblocking stylesheet.
+  	* Fixes SF #1668278: error when exporting the feed list
+  	  although the export was successfully completed
+  	  (reported by Allan Engelhardt)
+  	* Fixes SF #1657717: memory leak when stripping DHTML from
+  	  HTML type metadata (reported by Hubert Figuiere)
+
+  07 Mar 2007; Markus Rothe <corsair@gentoo.org> liferea-1.2.7.ebuild:
+  Added ~ppc64; bug #155053
+
+*liferea-1.2.7 (22 Feb 2007)
+
+  22 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.7.ebuild:
+  Bump to 1.2.7
+  	* Fixes in the feed list loading error handling.
+  	* Now after successful feed list import on startup a
+  	  feedlist.opml backup file will be created.
+  	* Fixes LUA support detection.
+
+  15 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> liferea-1.2.5.ebuild,
+  liferea-1.2.6b.ebuild:
+  Oops, it's use amd64 not amd64
+
+  13 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> liferea-1.2.6b.ebuild:
+  Disable lua; it was failing to compile
+
+*liferea-1.2.6b (12 Feb 2007)
+
+  12 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> liferea-1.2.5.ebuild,
+  +liferea-1.2.6b.ebuild:
+  Bump to 1.2.6b
+  	* Fixes SF #1654989 that caused crashes when marking duplicate
+  	  items as read/unread (reported by turminal)
+  	* Merged patch SF #1646186 by mooonz that improves LUA build
+  	  support and allows compilation against LUA 5.0 and 5.1
+  	* Update of French translation (Vincent Lefevre)
+  	* Update of Japanese translation (Takeshi AIHANA)
+
+  12 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2_rc5.ebuild,
+  -liferea-1.2.0.ebuild, -liferea-1.2.2.ebuild:
+  Remove old versions
+
+*liferea-1.2.5 (04 Feb 2007)
+
+  04 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2.5.ebuild:
+  Bump to 1.2.5
+
+  04 Feb 2007; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.2.5
+  	* Disabling GtkHTML2 support for x86_64 platforms.
+  	  Maintainers: please do discontinue any GtkHTML2 support
+  	  on such platforms if possible, as it cause only trouble!
+  	* Removed console warning that was given on each startup
+  	  as long as social bookmarking site was not set.
+  	* Fixes Debian #408475: liferea wrapper script is brittle, 
+  	  depends on $0 (report and patch by jrodman)
+  	* Fixes a type problem in the Digest authentication that 
+  	  caused crashes on AMD64 (SF #1636563)
+
+  22 Jan 2007; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.2.4
+  	* Fixes a possible GUI deadlock usually happening when
+  	  using the Gecko rendering during background feed updates.
+  	* Fixes a problem with relative feed base URLs.
+  	* Update of French translation (Vincent Lefevre)
+  	* New Turkish translation (Mehmet Atif Ergun)
+
+  11 Jan 2007; Daniel Gryniewicz <dang@gentoo.org> liferea-1.2.3.ebuild:
+  Fix libxml2 dep; bug #161626
+
+  11 Jan 2007; Daniel Gryniewicz <dang@gentoo.org> liferea-1.2.3.ebuild:
+  Fix xslt dep.  Bug #161606
+
+  11 Jan 2007; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.2.3
+  	* HTML view respects GTK theme colors now.
+  	* Fixes negative new count values in the mainwindow status bar.
+  	* Fixes incorrect unread count of parent folder when removing
+  	  subscriptions with unread items.
+  	* Fixes node info updating when marking read with middle 
+  	  mouse button in the feed list.
+  	* Fixes a bug that caused item loss in news bins.
+  	* Adds Arabic translation from Khaled Hosny.
+
+  09 Jan 2007; Markus Rothe <corsair@gentoo.org> liferea-1.0.24.ebuild:
+  Stable on ppc64; bug #159802
+
+  09 Jan 2007; Daniel Gryniewicz <dang@gentoo.org> liferea-1.2.0.ebuild,
+  liferea-1.2.2.ebuild:
+  Add WANT_*.  Bug #160539
+
+  05 Jan 2007; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.2.2
+  	Version 1.2.2 (Stable)
+  
+  	* Fixes folder expansion problem on startup: subfolders
+  	  were not expanded at all. (reported by Indigo 23)
+  	* Fixes the broken cache disabled archive mode. Feeds without
+  	  caching should be usable again. (reported by Indigo 23)
+  	* Fixes link styles in 2 pane summary mode when used with
+  	  GtkHTML2.
+  	* Fixes an effect where items selected from a search folder
+  	  are rendered in summary instead of detailed mode.
+  	* Memleak patch from Philip Withnall.
+  	Version 1.2.1 (Stable)
+  
+  	* Fixes a bug that prevented column resizing in the item list.
+  	* Fixes SF #1617434: prevents launching links in internal
+  	  browser when using GtkHTML2.
+  	* Fixes SF #1620875: loosing feeds after DnD
+  	* Fixes recursive favicon features which didn't update favicons
+  	  of feeds within folders.
+
+  04 Jan 2007; Gustavo Zacarias <gustavoz@gentoo.org> liferea-1.0.24.ebuild:
+  Stable on sparc wrt #159802
+
+  03 Jan 2007; Tobias Scherbaum <dertobi123@gentoo.org>
+  liferea-1.0.24.ebuild:
+  Stable on ppc wrt bug #159802.
+
+  03 Jan 2007; Andrej Kacian <ticho@gentoo.org> liferea-1.0.24.ebuild:
+  Stable on x86, bug #159802.
+
+  19 Dec 2006; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.2_rc1.ebuild,
+  -liferea-1.2_rc1-r1.ebuild, -liferea-1.2_rc3.ebuild,
+  -liferea-1.2_rc3-r1.ebuild:
+  Remove most of the RC versions
+
+  19 Dec 2006; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.2.0
+
+  12 Dec 2006; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.2_rc5
+
+  06 Dec 2006; Jason Wever <weeve@gentoo.org> liferea-1.2_rc3-r1.ebuild:
+  Added ~sparc keyword wrt bug #155053.
+
+*liferea-1.2_rc3-r1 (28 Nov 2006)
+*liferea-1.2_rc3 (28 Nov 2006)
+
+  28 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.2_rc1.ebuild,
+  liferea-1.2_rc1-r1.ebuild, +liferea-1.2_rc3.ebuild,
+  +liferea-1.2_rc3-r1.ebuild:
+  Bump to 1.2_rc3; both with and without xulrunner
+
+  28 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2_rc1.ebuild:
+  Oops, just noticed that non-xulrunner version was removed
+
+  20 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.0.16.ebuild,
+  -liferea-1.0.22-r1.ebuild, -liferea-1.0.23.ebuild, liferea-1.0.24.ebuild,
+  -liferea-1.1.9-r1.ebuild, -liferea-1.2_rc1.ebuild,
+  liferea-1.2_rc1-r1.ebuild:
+  cleanup versions and fix dbus deps for bug #155282
+
+*liferea-1.2_rc1-r1 (13 Nov 2006)
+
+  13 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.1.7.ebuild,
+  +liferea-1.2_rc1-r1.ebuild:
+  Drop old version; add xulrunner support; temporarily drop ppc, ppc64, and
+  sparc until xulrunner can be worked out (bug #155053)
+
+  13 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.1.9-r1.ebuild,
+  liferea-1.2_rc1.ebuild:
+  Fix seamonkey deps; bug #101782
+
+*liferea-1.2_rc1 (13 Nov 2006)
+
+  13 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.2_rc1.ebuild:
+  1.2 RC1 from upstream; bug fixes, state directory change
+
+  05 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.1.9.ebuild,
+  liferea-1.1.9-r1.ebuild:
+  Bump to 1.1.9-r1
+  	- Fix message selection bug
+
+  04 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.0.22-r1.ebuild,
+  liferea-1.0.23.ebuild, liferea-1.0.24.ebuild, -liferea-1.1.6.ebuild,
+  liferea-1.1.7.ebuild, liferea-1.1.9.ebuild:
+  Cleanup bad whitespace; remove unneded version
+
+  04 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.1.9
+  	- Assorted bug and crash fixes
+
+  03 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> ChangeLog:
+  Bump to 1.1.8
+  
+  - Bug fixes
+  
+  - New item age dependant date column format as used in other news/email
+  clients as Evolution.
+  
+  - Simple Bloglines support with a new feed list source type.
+
+  01 Nov 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.0.16.ebuild,
+  liferea-1.0.22-r1.ebuild, liferea-1.0.23.ebuild, liferea-1.0.24.ebuild,
+  liferea-1.1.6.ebuild, liferea-1.1.7.ebuild:
+  Add automake deps: bug #153274
+
+  24 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.1.7.ebuild:
+  New unstable upstream with wide view
+
+*liferea-1.1.7 (24 Oct 2006)
+
+  24 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.1.7.ebuild:
+  Bump to 1.1.7
+
+  24 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.0.24.ebuild:
+  New stable upstream release.
+
+*liferea-1.0.24 (24 Oct 2006)
+
+  24 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.0.24.ebuild:
+  Bump to 1.0.24
+
+  03 Oct 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.1.6.ebuild:
+  fix seamonkey typo
+
+*liferea-1.1.6 (02 Oct 2006)
+
+  02 Oct 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/liferea-1.1.0-libnotify.patch, +liferea-1.1.6.ebuild:
+  Add 1.1 version of liferea.  It seems good enough to use
+
+  02 Oct 2006; Daniel Gryniewicz <dang@gentoo.org>
+  -files/liferea-1.0.18-amd64.patch, -liferea-0.9.6.ebuild,
+  -liferea-1.0.21.ebuild, -liferea-1.0.22.ebuild:
+  Clean up old versions
+
+*liferea-1.0.23 (18 Sep 2006)
+
+  18 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.0.23.ebuild:
+  Bump to 1.0.23
+
+*liferea-1.0.22-r1 (14 Sep 2006)
+
+  14 Sep 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/liferea-1.0.22-add-feed.patch, +liferea-1.0.22-r1.ebuild:
+  Bump to 1.0.22-r1
+
+  02 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.0.20.ebuild,
+  +liferea-1.0.22.ebuild:
+  New upstream; includes seamonkey fix
+
+*liferea-1.0.22 (01 Sep 2006)
+
+  01 Sep 2006; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.0.20.ebuild,
+  +liferea-1.0.22.ebuild:
+  Bump to 1.0.22
+
+  13 Aug 2006; Markus Rothe <corsair@gentoo.org> liferea-1.0.16.ebuild:
+  Stable on ppc64; bug #140644
+
+  11 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.0.20.ebuild,
+  liferea-1.0.21.ebuild:
+  liferea deps on gnome-open, which is in libgnome
+
+*liferea-1.0.21 (10 Aug 2006)
+
+  10 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> -liferea-1.0.18.ebuild,
+  +liferea-1.0.21.ebuild:
+  Remove old version, add new version with seamonkey patch upstream
+
+  08 Aug 2006; Daniel Gryniewicz <dang@gentoo.org>
+  -files/liferea-firefox-1.5.patch, -liferea-1.0-r1.ebuild,
+  -liferea-1.0.3.ebuild, -liferea-1.0.4.ebuild, -liferea-1.0.15.ebuild:
+  Remove old versions
+
+*liferea-1.0.20 (08 Aug 2006)
+
+  08 Aug 2006; Daniel Gryniewicz <dang@gentoo.org> +liferea-1.0.20.ebuild:
+  add 1.0.20 with lots of fixes
+
+  01 Aug 2006; Andrej Kacian <ticho@gentoo.org> liferea-1.0.16.ebuild:
+  Stable on x86, bug #140644.
+
+  31 Jul 2006; Tobias Scherbaum <dertobi123@gentoo.org>
+  liferea-1.0.16.ebuild:
+  ppc stable, bug #140644
+
+*liferea-1.0.18 (31 Jul 2006)
+
+  31 Jul 2006; Daniel Gryniewicz <dang@gentoo.org>
+  +files/liferea-1.0.18-amd64.patch, +liferea-1.0.18.ebuild:
+  New version of liferea;  Add 64bit-clean patch for gtkhtml
+
+  31 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> liferea-1.0.16.ebuild:
+  Marked stable on amd64 bug #140644
+
+  30 Jul 2006; Jason Wever <weeve@gentoo.org> liferea-1.0.16.ebuild:
+  Stable on SPARC wrt bug #140644.
+
+  30 Jul 2006; Daniel Gryniewicz <dang@gentoo.org> metadata.xml:
+  Take maintainership from (retired) former maintiner
+
+*liferea-1.0.16 (03 Jul 2006)
+
+  03 Jul 2006; anarchy <anarchy@gentoo.org>
+  +files/liferea-1.0.16-seamonkey.diff, +liferea-1.0.16.ebuild:
+  revision bump with seamonkey support
+
+*liferea-1.0.15 (15 Jun 2006)
+
+  15 Jun 2006; John N. Laliberte <allanonjl@gentoo.org>
+  +liferea-1.0.15.ebuild:
+  new version, cleaned up ebuild, fixes #125710
+
+  29 Apr 2006; Jason Wever <weeve@gentoo.org> liferea-0.9.6.ebuild:
+  Stable on SPARC.
+
+  17 Feb 2006; Markus Rothe <corsair@gentoo.org> liferea-0.9.6.ebuild,
+  liferea-1.0-r1.ebuild, liferea-1.0.3.ebuild, liferea-1.0.4.ebuild:
+  0.9.6 stable on ppc64; added ~ppc64 to others
+
+*liferea-1.0.4 (12 Feb 2006)
+
+  12 Feb 2006; Michael Kohl <citizen428@gentoo.org> +liferea-1.0.4.ebuild:
+  Version bump.
+
+  05 Feb 2006; Michael Kohl <citizen428@gentoo.org> -liferea-0.9.7a.ebuild,
+  -liferea-0.9.7b.ebuild, -liferea-1.0_rc2.ebuild, -liferea-1.0_rc3.ebuild,
+  -liferea-1.0_rc4.ebuild, -liferea-1.0.ebuild:
+  Cleaned out older versions.
+
+*liferea-1.0.3 (05 Feb 2006)
+
+  05 Feb 2006; Michael Kohl <citizen428@gentoo.org> +liferea-1.0.3.ebuild:
+  Version bump. We are no longer needing the patch to make Liferea compile
+  against Firefox 1.5.
+
+*liferea-1.0-r1 (13 Jan 2006)
+
+  13 Jan 2006; Michael Kohl <citizen428@gentoo.org>
+  +files/liferea-firefox-1.5.patch, +liferea-1.0-r1.ebuild:
+  Revision bump to include a patch so Liferea can be built against Firefox 1.5.
+
+  12 Jan 2006; Saleem Abdulrasool <compnerd@gentoo.org>
+  liferea-0.9.6.ebuild, liferea-0.9.7a.ebuild, liferea-0.9.7b.ebuild,
+  liferea-1.0_rc2.ebuild, liferea-1.0_rc3.ebuild, liferea-1.0_rc4.ebuild,
+  liferea-1.0.ebuild:
+  pkgmove gnome-extra/libgtkhtml gnome-extra/gtkhtml
+
+  11 Jan 2006; Jason Wever <weeve@gentoo.org> liferea-1.0.ebuild:
+  Added ~sparc keyword as we got dropped like a jive sucka.
+
+*liferea-1.0 (05 Jan 2006)
+
+  05 Jan 2006; Michael Kohl <citizen428@gentoo.org> +liferea-1.0.ebuild:
+  Version bump.
+
+  22 Dec 2005; John N. Laliberte <allanonjl@gentoo.org> metadata.xml:
+  remove gnome from metadata
+
+*liferea-1.0_rc4 (21 Nov 2005)
+
+  21 Nov 2005; Michael Kohl <citizen428@gentoo.org> +liferea-1.0_rc4.ebuild:
+  Version bump.
+
+  10 Nov 2005; Jason Wever <weeve@gentoo.org> liferea-1.0_rc3.ebuild:
+  Added ~sparc keyword because it mysteriously disappeared in the version bump :(
+
+  05 Nov 2005; Michael Kohl <citizen428@gentoo.org> -liferea-0.9.3.ebuild,
+  -liferea-0.9.4.ebuild, -liferea-0.9.5.ebuild:
+  Cleaned out old versions.
+
+*liferea-1.0_rc3 (05 Nov 2005)
+
+  05 Nov 2005; Michael Kohl <citizen428@gentoo.org> +liferea-1.0_rc3.ebuild:
+  Version bump.
+
+  14 Oct 2005; Gustavo Zacarias <gustavoz@gentoo.org> liferea-0.9.6.ebuild,
+  liferea-0.9.7a.ebuild, liferea-0.9.7b.ebuild, liferea-1.0_rc2.ebuild:
+  Keyworded ~sparc wrt #108694
+
+*liferea-1.0_rc2 (14 Oct 2005)
+
+  14 Oct 2005; Michael Kohl <citizen428@gentoo.org> +liferea-1.0_rc2.ebuild:
+  Version bump. Patch submitted by TGL <degrenier@easyconnect.fr> in bug #105068
+
+  06 Oct 2005; Michael Hanselmann <hansmi@gentoo.org> liferea-0.9.6.ebuild:
+  Stable on ppc.
+
+  05 Oct 2005; Paul Varner <fuzzyray@gentoo.org> liferea-0.9.6.ebuild:
+  Stable on x86. Bug# 108020
+
+  04 Oct 2005; <dang@gentoo.org> liferea-0.9.6.ebuild:
+  Marked stable on amd64
+
+*liferea-0.9.7b (07 Sep 2005)
+
+  07 Sep 2005; Michael Kohl <citizen428@gentoo.org> +liferea-0.9.7b.ebuild:
+  Version bump, adding optional support for DBUS. Ebuild submitted by TGL
+  <degrenier@easyconnect.fr> in bug #105068.
+
+  04 Sep 2005; Michael Kohl <citizen428@gentoo.org> -liferea-0.9.2.ebuild:
+  Cleaned out the ebuild for 0.9.2.
+
+*liferea-0.9.7a (04 Sep 2005)
+
+  04 Sep 2005; Michael Kohl <citizen428@gentoo.org> +liferea-0.9.7a.ebuild:
+  Version bump, including patch submitted by TGL <degrenier@easyconnect.fr> in
+  bug #100051. Also marking #104238 as fixed.
+
+  01 Sep 2005; Herbie Hopkins <herbs@gentoo.org> liferea-0.9.3.ebuild:
+  Stable on amd64.
+
+  27 Aug 2005; Brent Baude <ranger@gentoo.org> liferea-0.9.6.ebuild:
+  marking liferea-0.9.6 ~ppc64; referring to bug
+  http://bugs.gentoo.org/show_bug.cgi?id=102714
+
+  19 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> liferea-0.9.3.ebuild:
+  Stable on ppc.
+
+  17 Aug 2005; Michael Kohl <citizen428@gentoo.org> metadata.xml:
+  Added missing family name to the maintainer info in metadata.xml.
+
+*liferea-0.9.6 (16 Aug 2005)
+
+  16 Aug 2005; Michael Kohl <citizen428@gentoo.org> -liferea-0.9.1.ebuild,
+  liferea-0.9.3.ebuild, +liferea-0.9.6.ebuild:
+  Added 0.9.6, marked 0.9.3 stable on x86, removed 0.9.1.
+
+  14 Aug 2005; Michael Hanselmann <hansmi@gentoo.org> liferea-0.9.2.ebuild:
+  Stable on ppc.
+
+*liferea-0.9.5 (01 Aug 2005)
+
+  01 Aug 2005; Michael Kohl <citizen428@gentoo.org> +liferea-0.9.5.ebuild:
+  Version bump.
+
+*liferea-0.9.4 (24 Jul 2005)
+
+  24 Jul 2005; Michael Kohl <citizen428@gentoo.org> -liferea-0.9.0b.ebuild,
+  +liferea-0.9.4.ebuild:
+  Version bump and cleaned out an older version.
+
+*liferea-0.9.3 (17 Jul 2005)
+
+  17 Jul 2005; Michael Kohl <citizen428@gentoo.org> liferea-0.9.2.ebuild,
+  +liferea-0.9.3.ebuild:
+  Added 0.9.3 and marked 0.9.2 stable on x86.
+
+  22 May 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  liferea-0.9.1.ebuild:
+  Stable on ppc.
+
+*liferea-0.9.2 (20 May 2005)
+
+  20 May 2005; Michael Kohl <citizen428@gentoo.org> liferea-0.9.1.ebuild,
+  +liferea-0.9.2.ebuild:
+  Marked 0.9.1 stable on x86. Added 0.9.2 and finally removed the deprecated
+  warning message in pkg_setup.
+
+  12 May 2005; Tobias Scherbaum <dertobi123@gentoo.org>
+  liferea-0.9.0b.ebuild:
+  Stable on ppc.
+
+  23 Mar 2005; Seemant Kulleen <seemant@gentoo.org> liferea-0.9.0b.ebuild,
+  liferea-0.9.1.ebuild:
+  change dep from net-www/mozilla to www-client/mozilla
+
+*liferea-0.9.1 (18 Mar 2005)
+*liferea-0.9.0b (18 Mar 2005)
+
+  18 Mar 2005; Seemant Kulleen <seemant@gentoo.org> +metadata.xml,
+  +liferea-0.9.0b.ebuild, +liferea-0.9.1.ebuild:
+  Moved from net-www/liferea to net-news/liferea.
+
+  13 Mar 2005; Michael Kohl <citizen428@gentoo.org> :
+  Fixed digest, see bug #85030
+
+*liferea-0.9.1 (13 Mar 2005)
+
+  13 Mar 2005; Michael Kohl <citizen428@gentoo.org> -liferea-0.6.4b.ebuild,
+  -liferea-0.9.0.ebuild, liferea-0.9.0b.ebuild, +liferea-0.9.1.ebuild:
+  Marked 0.9.0b stable on x86, added 0.9.1 and removed older versions.
+
+*liferea-0.9.0b (20 Jan 2005)
+
+  20 Jan 2005; Michael Kohl <citizen428@gentoo.org> +liferea-0.9.0b.ebuild:
+  Version bump; requested by Daniel Webert <rockoo@gmail.com> in bug #78032
+
+*liferea-0.9.0 (14 Jan 2005)
+
+  14 Jan 2005; Michael Kohl <citizen428@gentoo.org> -liferea-0.6.1.ebuild,
+  -liferea-0.6.2.ebuild, liferea-0.6.4b.ebuild, +liferea-0.9.0.ebuild:
+  Version bump; marked 0.6.4b stable on x86; cleaned out older versions.
+
+  03 Dec 2004; Sven Wegener <swegener@gentoo.org> :
+  Removed stray digests. Fixed broken Manifest.
+
+*liferea-0.6.4b (02 Dec 2004)
+
+  02 Dec 2004; Michael Kohl <citizen428@gentoo.org> metadata.xml,
+  -liferea-0.5.3.ebuild, -liferea-0.6.0.ebuild, +liferea-0.6.4b.ebuild:
+  Version bump. Removed some older versions. Added myself as maintainer.
+
+*liferea-0.6.2 (22 Nov 2004)
+
+  22 Nov 2004; Mike Gardiner <obz@gentoo.org> liferea-0.6.1.ebuild,
+  +liferea-0.6.2.ebuild:
+  New version as requested in #71579, and marked 0.6.1 x86
+
+*liferea-0.6.1 (07 Nov 2004)
+
+  07 Nov 2004; Mike Gardiner <obz@gentoo.org> -liferea-0.5.3b.ebuild,
+  -liferea-0.5.3c.ebuild, liferea-0.6.0.ebuild, +liferea-0.6.1.ebuild:
+  Removed unneeded older versions. Marked version 0.6.0 x86. Added new version
+  0.6.1.
+
+*liferea-0.6.0 (30 Oct 2004)
+
+  30 Oct 2004; Travis Tilley <lv@gentoo.org> liferea-0.6.0.ebuild:
+  stable on amd64
+
+  14 Sep 2004; Yi Qiang <khai@gentoo.org> :
+  Version bump
+
+  06 Sep 2004; Ciaran McCreesh <ciaranm@gentoo.org> liferea-0.5.3.ebuild,
+  liferea-0.5.3b.ebuild:
+  Switch to use epause and ebeep, bug #62950
+
+*liferea-0.5.3c (06 Sep 2004)
+
+  06 Sep 2004; Yi Qiang <khai@gentoo.org> +liferea-0.5.3c.ebuild:
+  Figured out what was wrong with 0.5.3c, back in the tree
+
+*liferea-0.5.3c (05 Sep 2004)
+
+  05 Sep 2004; Yi Qiang <khai@gentoo.org> -liferea-0.5.3c.ebuild:
+  Pulled 0.5.3c, it seems to be broken.
+
+  05 Sep 2004; Yi Qiang <khai@gentoo.org> :
+  Version bump, 0.5.3c fixes a huge memory leak
+
+  04 Sep 2004; Pieter Van den Abeele <pvdabeel@gentoo.org>
+  liferea-0.5.3b.ebuild:
+  Masked liferea-0.5.3b.ebuild stable for ppc
+
+  30 Aug 2004; David Holm <dholm@gentoo.org> liferea-0.5.3b.ebuild:
+  Added to ~ppc.
+
+*liferea-0.5.3b (22 Aug 2004)
+
+  22 Aug 2004; Mike Gardiner <obz@gentoo.org> -liferea-0.4.6b.ebuild,
+  -liferea-0.4.8.ebuild, -liferea-0.4.9.ebuild, liferea-0.5.3.ebuild,
+  +liferea-0.5.3b.ebuild:
+  Added new version 0.5.3b, marked 0.5.3 x86, and removed old versions that
+  incorrectly handled the gtkhtml/mozilla USEing
+
+*liferea-0.5.3 (18 Aug 2004)
+
+  18 Aug 2004; Mike Gardiner <obz@gentoo.org> +liferea-0.5.3.ebuild:
+  New version 0.5.3 added, thanks for the help to all in bug #54600, fixed up
+  the mozilla/gtkhtml2 handling - slightly
+
+*liferea-0.4.9 (23 May 2004)
+
+  23 May 2004; Yi Qiang <khai@gentoo.org> :
+  Version bump, added ewarns about losing the feed list
+
+*liferea-0.4.8 (05 May 2004)
+
+  05 May 2004; Yi Qiang <khai@gentoo.org> :
+  Version bump
+
+*liferea-0.4.6e (13 Apr 2004)
+
+  13 Apr 2004; <khai@gentoo.org> liferea-0.4.6e.ebuild:
+  Version bump, closes #45047
+
+*liferea-0.4.6c (06 Mar 2004)
+
+  06 Mar 2004; Alastair Tse <liquidx@gentoo.org> liferea-0.4.6c.ebuild:
+  version bump (#43319)
+
+  02 Mar 2004; <augustus@gentoo.org> liferea-0.4.6b.ebuild:
+  Added ~amd64 keyword.
+
+*liferea-0.4.6b (08 Jan 2004)
+
+  08 Jan 2004; Alastair Tse <liquidx@gentoo.org> liferea-0.4.6b.ebuild:
+  version bump (#37472)
+
+*liferea-0.4.5 (10 Dec 2003)
+
+  10 Dec 2003; Alastair Tse <liquidx@gentoo.org> liferea-0.4.5.ebuild:
+  initial commit. ebuild based on suka's submission <suka@t0.or.at> (#27551)
+
