@@ -2,8 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit mono
-
 DESCRIPTION="Stuffkeeper is a generic catalog program. It is not focused on a particular type, you define any amount of typesm, like audio-cd, dvd, serial-number, computer-hardware, etc."
 HOMEPAGE="http://www.sarine.nl/stuffkeeper"
 SRC_URI="http://download.sarine.nl/Programs/StuffKeeper/${P}.tar.bz2"
@@ -11,8 +9,6 @@ KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
 IUSE=""
-
-RESTRICT="nomirror"
 
 DEPEND=">=x11-libs/gtk+-2.10
 		>=dev-libs/glib-2.10
@@ -23,6 +19,14 @@ DEPEND=">=x11-libs/gtk+-2.10
 		>=dev-db/sqlite-3
 		app-text/gtkspell"
 RDEPEND="${DEPEND}"
+
+src_compile() {
+	#econf || die "econf failed"
+	./configure \
+		--prefix=/usr
+		--infodir=/usr/share/info \
+		--mandir=/usr/share/man || die "./configure failed"
+}
 
 src_install() {
 	dodoc AUTHORS LICENSE
