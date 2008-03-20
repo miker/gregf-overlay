@@ -21,10 +21,6 @@ DEPEND=">=x11-libs/gtk+-2.10
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	${MAKEOPTS} ${myconf} CFLAGS="${CFLAGS}" || die "scons failed"
-}
-
-src_compile() {
 	./configure \
 		--prefix=/usr
 }
