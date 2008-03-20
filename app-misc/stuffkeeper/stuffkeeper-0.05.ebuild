@@ -8,24 +8,25 @@ SRC_URI="http://download.sarine.nl/Programs/StuffKeeper/${P}.tar.bz2"
 KEYWORDS="~amd64 ~x86"
 SLOT="0"
 LICENSE="GPL-2"
-IUSE=""
+IUSE="spell"
 
 DEPEND=">=x11-libs/gtk+-2.10
 		>=dev-libs/glib-2.10
+		>=dev-db/sqlite-3
+		>=gnome-base/libglade-2.6
 		dev-lang/python
 		dev-util/gob
-		>=gnome-base/libglade-2.6
 		dev-util/intltool
-		>=dev-db/sqlite-3
-		app-text/gtkspell"
+		spell? ( app-text/gtkspell )"
 RDEPEND="${DEPEND}"
 
 src_compile() {
-	#econf || die "econf failed"
+	${MAKEOPTS} ${myconf} CFLAGS="${CFLAGS}" || die "scons failed"
+}
+
+src_compile() {
 	./configure \
 		--prefix=/usr
-		--infodir=/usr/share/info \
-		--mandir=/usr/share/man || die "./configure failed"
 }
 
 src_install() {
