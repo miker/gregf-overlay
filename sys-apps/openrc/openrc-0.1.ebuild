@@ -19,12 +19,8 @@ RDEPEND="virtual/init
 		kernel_FreeBSD? ( sys-process/fuser-bsd )
 		ncurses? ( sys-libs/ncurses )
 		pam? ( virtual/pam )
-		!<sys-apps/baselayout-2.0.0
-		>=sys-apps/baselayout-2.0.0
 		!<sys-fs/udev-118-r2"
 DEPEND="virtual/os-headers
-		!<sys-apps/baselayout-2.0.0
-		>=sys-apps/baselayout-2.0.0"
 
 pkg_setup() {
 	LIBDIR="lib"
