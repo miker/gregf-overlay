@@ -37,7 +37,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	local arch="i386" ded_exe="ioq3ded" exe="ioquake3"
+	#local arch="i386" ded_exe="ioq3ded" exe="ioquake3"
 	use amd64 && arch="x86_64"
 
 	ded_exe="${ded_exe}.${arch}"
