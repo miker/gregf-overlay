@@ -46,7 +46,7 @@ src_install() {
 	doexe "${exe}"*."${arch}" || die
 	if use dedicated ; then
 		doexe "${ded_exe}" || die
-		games_make_wrapper ${PN}-ded "./${ded_exe}" "${dir}"
+		games_make_wrapper ${PN}_ded "./${ded_exe}" "${dir}"
 	fi
 
 	insinto "${dir}"
