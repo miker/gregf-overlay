@@ -8,7 +8,7 @@ MY_PV=$(delete_all_version_separators)
 
 DESCRIPTION="Open-source replacement for Quake 3 Arena"
 HOMEPAGE="http://openarena.ws/"
-SRC_URI="http://download.tuxfamily.net/cooker/openarena/rel070/oa076.zip"
+SRC_URI="http://download.tuxfamily.net/cooker/openarena/rel070/oa${MY_PV}.zip"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -25,7 +25,7 @@ RDEPEND="virtual/opengl
 	x11-libs/libXdmcp"
 DEPEND="app-arch/unzip"
 
-S=${WORKDIR}/openarena-0.7.6
+S=${WORKDIR}/${P}
 
 dir=${GAMES_PREFIX_OPT}/${PN}
 
@@ -37,7 +37,7 @@ pkg_nofetch() {
 }
 
 src_install() {
-	#local arch="i386" ded_exe="ioq3ded" exe="ioquake3"
+	local arch="i386" ded_exe="oa_ded" exe="openarena"
 	use amd64 && arch="x86_64"
 
 	ded_exe="${ded_exe}.${arch}"
@@ -46,7 +46,7 @@ src_install() {
 	doexe "${exe}"*."${arch}" || die
 	if use dedicated ; then
 		doexe "${ded_exe}" || die
-		games_make_wrapper ${PN}_ded "./${ded_exe}" "${dir}"
+		games_make_wrapper ${PN}-ded "./${ded_exe}" "${dir}"
 	fi
 
 	insinto "${dir}"
