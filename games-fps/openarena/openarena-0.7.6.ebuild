@@ -8,13 +8,12 @@ MY_PV=$(delete_all_version_separators)
 
 DESCRIPTION="Open-source replacement for Quake 3 Arena"
 HOMEPAGE="http://openarena.ws/"
-SRC_URI="http://download.tuxfamily.net/cooker/openarena/rel070/oa${MY_PV}.zip"
-
+SRC_URI="http://download.tuxfamily.org/openarena/rel/"${MY_PV}"/oa"${MY_PV}".zip
+	http://openarena.ws/svn/source/"${MY_PV}"/ioquake3svn1288plus4.tar.bz2"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dedicated"
-RESTRICT="fetch strip"
+IUSE="dedicated smp"
 
 RDEPEND="virtual/opengl
 	media-libs/openal
@@ -25,37 +24,44 @@ RDEPEND="virtual/opengl
 	x11-libs/libXdmcp"
 DEPEND="app-arch/unzip"
 
-S=${WORKDIR}/${P}
 
-dir=${GAMES_PREFIX_OPT}/${PN}
+MY_S="${WORKDIR}"/ioquake3svn1288
+build_dir=build
+dir="${GAMES_DATADIR}"/"${PN}"
 
-pkg_nofetch() {
-	einfo "Please download ${A} from:"
-	einfo "  ${HOMEPAGE}"
-	einfo "and move them to ${DISTDIR}"
-	echo
+
+src_compile() {
+	cd "${MY_S}"
+	emake \
+		DEFAULT_BASEDIR="${dir}" \
+		BR="${build_dir}" \
+		BUILD_GAME_SO=0 \
+		BUILD_GAME_QVM=0 \
+		$(! use dedicated && echo BUILD_SERVER=0) \
+		$(use smp && echo BUILD_CLIENT_SMP=1) \
+		|| die "emake failed"
 }
 
 src_install() {
-	local arch="i386" ded_exe="oa_ded" exe="openarena"
-	use amd64 && arch="x86_64"
+	local ded_exe="ioq3ded" exe="ioquake3"
 
-	ded_exe="${ded_exe}.${arch}"
+	if use smp ; then
+		exe="${exe}"-smp
+	fi
 
-	exeinto "${dir}"
-	doexe "${exe}"*."${arch}" || die
-	if use dedicated ; then
-		doexe "${ded_exe}" || die
-		games_make_wrapper ${PN}-ded "./${ded_exe}" "${dir}"
+	newgamesbin "${MY_S}"/"${build_dir}"/"${exe}".* "${PN}" || die
+
+	if use dedicated ; then	
+		newgamesbin "${MY_S}"/"${build_dir}"/"${ded_exe}".* "${PN}"-ded || die
 	fi
 
 	insinto "${dir}"
-	doins -r baseoa || die
-	doins CHANGES CREDITS LINUXNOTES README || die
+	doins -r baseoa || die "doins -r failed"
+	
+	dodoc CHANGES CREDITS LINUXNOTES README
 
-	games_make_wrapper ${PN} "./${exe}.${arch}" "${dir}"
-	doicon "${FILESDIR}"/openarena.xpm
-	make_desktop_entry ${PN} "Open Arena" openarena
+	newicon "${MY_S}"/misc/quake3.png "${PN}".png
+	make_desktop_entry "${PN}" "OpenArena" "${PN}"
 
 	prepgamesdirs
 }
