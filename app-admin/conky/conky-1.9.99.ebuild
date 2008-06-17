@@ -16,7 +16,6 @@ IUSE="X"
 DEPEND_COMMON="
     virtual/libc
     X? (
-        virtual/x11
         >=x11-libs/cairo-0.9.2
 		>=media-libs/libsvg-0.1.3
 		>=x11-libs/libsvg-cairo-0.1.6
