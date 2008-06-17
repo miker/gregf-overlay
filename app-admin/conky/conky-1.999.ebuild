@@ -15,7 +15,7 @@ LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~alpha ~amd64 ~ppc ~ppc64 ~sparc ~x86"
 IUSE="audacious audacious-legacy bmpx debug hddtemp ipv6 mpd nano-syntax rss truetype vim-syntax
-smapi wifi X"
+smapi wifi X nvidia"
 
 DEPEND_COMMON="
 	virtual/libc
