@@ -91,6 +91,9 @@ src_compile() {
 	elif useq audacious; then
 		myconf="${myconf} --enable-audacious"
 	fi
+	if useq nvidia then
+		myconf="${myconf} --enable-nvidia"
+	fi
 	econf \
 		${myconf} \
 		$(use_enable bmpx) \
@@ -100,6 +103,7 @@ src_compile() {
 		$(use_enable rss) \
 		$(use_enable smapi) \
 		$(use_enable wifi wlan) \
+		$(use_enable nvidia) \
 		$(use_enable !ipv6 portmon) || die "econf failed"
 	emake ${mymake} || die "compile failed"
 }
