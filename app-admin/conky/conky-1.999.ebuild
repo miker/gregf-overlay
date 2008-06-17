@@ -45,7 +45,9 @@ RDEPEND="${DEPEND_COMMON}
 	vim-syntax? ( || ( app-editors/vim
 	app-editors/gvim ) )
 	nano-syntax? ( app-editors/nano )
-	nvidia? ( x11-drivers/nvidia-drivers )"
+	nvidia? ( x11-drivers/nvidia-drivers 
+			  media-video/nvidia-settings
+			)"
 
 DEPEND="
 	${DEPEND_COMMON}
