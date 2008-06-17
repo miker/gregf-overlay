@@ -44,7 +44,8 @@ RDEPEND="${DEPEND_COMMON}
 	hddtemp? ( app-admin/hddtemp )
 	vim-syntax? ( || ( app-editors/vim
 	app-editors/gvim ) )
-	nano-syntax? ( app-editors/nano )"
+	nano-syntax? ( app-editors/nano )
+	nvidia? ( x11-drivers/nvidia-drivers )"
 
 DEPEND="
 	${DEPEND_COMMON}
@@ -91,7 +92,7 @@ src_compile() {
 	elif useq audacious; then
 		myconf="${myconf} --enable-audacious"
 	fi
-	if useq nvidia then
+	if useq nvidia; then
 		myconf="${myconf} --enable-nvidia"
 	fi
 	econf \
