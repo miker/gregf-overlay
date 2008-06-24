@@ -1,4 +1,4 @@
---- setup.rb.original	2008-06-24 19:32:41.000000000 -0400
+--- setup.rb.orig	2008-06-24 19:32:41.000000000 -0400
 +++ setup.rb	2008-06-24 19:44:44.000000000 -0400
 @@ -128,8 +128,9 @@ else
      lib_dir = Gem::ConfigMap[site_or_vendor]
