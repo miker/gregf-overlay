@@ -6,10 +6,17 @@ inherit eutils versionator games
 
 MY_PV=$(delete_all_version_separators)
 
+# Init ${P}, ${PV}, ${MY_PV} but from the previous version
+PREV_PV=0.7.6
+PREV_P="${PN}-${PREV_PV}"
+MY_PREV_PV=076
+
+
 DESCRIPTION="Open-source replacement for Quake 3 Arena"
 HOMEPAGE="http://openarena.ws/"
-SRC_URI="http://download.tuxfamily.org/openarena/rel/"${MY_PV}"/oa"${MY_PV}".zip
-	http://openarena.ws/svn/source/"${MY_PV}"/ioquake3svn1288plus4.tar.bz2"
+SRC_URI="http://download.tuxfamily.org/openarena/rel/"${MY_PREV_PV}"/oa"${MY_PREV_PV}".zip
+	http://openarena.ws/svn/source/"${MY_PV}"/"${PN}${MY_PV}"scr3.tar.bz2
+	http://download.tuxfamily.org/openarena/rel/"${MY_PV}"/oa"${MY_PV}"-patch.zip"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
@@ -25,10 +32,13 @@ RDEPEND="virtual/opengl
 DEPEND="app-arch/unzip"
 
 
-MY_S="${WORKDIR}"/ioquake3svn1288
-build_dir=build
-dir="${GAMES_DATADIR}"/"${PN}"
+MY_S="${WORKDIR}/${PN}${MY_PV}"
 
+build_dir=build
+dir="${GAMES_DATADIR}/${PN}"
+
+# Init ${S} but from the previous version
+PREV_S="${WORKDIR}"/"${PREV_P}"
 
 src_compile() {
 	cd "${MY_S}"
@@ -46,21 +56,22 @@ src_install() {
 	local ded_exe="ioq3ded" exe="ioquake3"
 
 	if use smp ; then
-		exe="${exe}"-smp
+		exe="${exe}-smp"
 	fi
 
-	newgamesbin "${MY_S}"/"${build_dir}"/"${exe}".* "${PN}" || die
+	newgamesbin "${MY_S}/${build_dir}/${exe}".* "${PN}" || die
 
 	if use dedicated ; then	
-		newgamesbin "${MY_S}"/"${build_dir}"/"${ded_exe}".* "${PN}"-ded || die
+		newgamesbin "${MY_S}/${build_dir}/${ded_exe}".* "${PN}-ded" || die
 	fi
 
+	cd "${PREV_S}"
 	insinto "${dir}"
 	doins -r baseoa || die "doins -r failed"
 	
 	dodoc CHANGES CREDITS LINUXNOTES README
 
-	newicon "${MY_S}"/misc/quake3.png "${PN}".png
+	newicon "${MY_S}/misc/quake3.png" "${PN}".png
 	make_desktop_entry "${PN}" "OpenArena" "${PN}"
 
 	prepgamesdirs
