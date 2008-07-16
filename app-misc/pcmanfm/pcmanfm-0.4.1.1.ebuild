@@ -24,11 +24,6 @@ DEPEND="${RDEPEND}
 
 S=${WORKDIR}/${MY_P}
 
-src_unpack() {
-	unpack ${A}
-	cd ${A}
-	epatch "${FILESDIR}"/confirm_delete.patch
-}
 pkg_setup() {
 	if ! use fam ; then
 		ewarn "You have disabled fam, experimental inotify support"
