@@ -11,7 +11,7 @@ SRC_URI="ftp://ftp.novell.com/pub/mono/sources/moon/moon-${PV}.tar.bz2"
 
 LICENSE="LGPL"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 IUSE="+ffmpeg mono +nsplugin"
 
 
