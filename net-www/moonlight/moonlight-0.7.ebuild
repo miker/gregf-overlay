@@ -12,7 +12,7 @@ SRC_URI="ftp://ftp.novell.com/pub/mono/sources/moon/moon-${PV}.tar.bz2"
 LICENSE="LGPL"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="+ffmpeg mono +nsplugin"
+IUSE="ffmpeg mono nsplugin"
 
 
 DEPEND="ffmpeg? ( media-video/ffmpeg )
@@ -25,8 +25,8 @@ DEPEND="ffmpeg? ( media-video/ffmpeg )
 		 dev-libs/nss
 		 net-libs/libgssglue
 	app-text/opensp
-	net-libs/xulrunner
-				"
+	net-libs/xulrunner"
+
 RDEPEND="${DEPEND}"
 
 S="${WORKDIR}/moon-${PV}"
