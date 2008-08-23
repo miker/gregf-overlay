@@ -18,13 +18,13 @@ RDEPEND="x11-libs/libXext
 	x11-proto/xextproto"
 DEPEND="${RDEPEND}
 	>=dev-util/scons-0.96.1
-	media-libs/freetype
 	xinerama? ( x11-libs/libXinerama )"
 
 src_unpack(){
 	unpack ${A}
 	cd "${S}"
 	epatch "${FILESDIR}"/ipager-${PV}-scons.patch || die "epatch for SConstruct failed"
+	epatch "${FILESDIR}"/ipager-${PV}-gcc.patch || die "epatch for gcc failed"
 }
 src_compile() {
 	if use xinerama; then
@@ -42,10 +42,4 @@ src_install() {
 		insinto /usr/share/ipager/themes
 		doins themes/*.conf || die "Could not install themes"
 	fi
-}
-
-pkg_postinst() {
-	einfo "If you had the themes used flag enabled some IPager themes"
-	einfo "have been placed into /usr/share/ipager/themes/. Copying"
-	einfo "theme to ~/.ipager/ipager.conf will allow you to use one."
 }
