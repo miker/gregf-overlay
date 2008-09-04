@@ -68,10 +68,6 @@ src_unpack() {
 	mv "${WORKDIR}"/patch-1.5.18.vvv.nntp "${PATCHDIR}"/06-nntp.patch
 	cp "${FILESDIR}"/${P}-mbox_hook.patch "${PATCHDIR}"/04-mbox_hook.patch
 
-	epatch "${FILESDIR}"/mutt-1.5.13-smarttime.patch
-	# this patch is non-generic and only works because we use a sysconfdir
-	# different from the one used by the mailbase ebuild
-	epatch "${FILESDIR}"/mutt-1.5.13-prefix-mailcap.patch
 	# get back real change-folder-next behaviour!
 	( cd "${WORKDIR}" && epatch "${FILESDIR}"/${P}-change-folder-next.patch )
 	# fix bdb detection
