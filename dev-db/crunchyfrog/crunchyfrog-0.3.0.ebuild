@@ -14,7 +14,6 @@ IUSE="mysql sqlite3 ldap postgresql mssql"
 RDEPEND="${DEPEND}
 	dev-python/libbonobo-python
 	dev-python/libgnomecanvas-python
-	dev-python/gnome-python-base
 	dev-python/kiwi
 	dev-python/configobj
 	dev-python/gnome-keyring-python
@@ -34,19 +33,6 @@ RDEPEND="${DEPEND}
 	postgresql? ( >=dev-python/psycopg-2 )
 	mssql? ( dev-python/pymssql )"
 
-#src_unpack(){
-	#unpack ${A}
-	#cd "${S}"
-	#epatch "${FILESDIR}"/ipager-${PV}-scons.patch || die "epatch for SConstruct failed"
-	#epatch "${FILESDIR}"/ipager-${PV}-gcc.patch || die "epatch for gcc failed"
-#}
-#src_compile() {
-	#if use xinerama; then
-		#myconf="${myconf} xinerama=yes"
-	#fi
-	#scons --cache-disable \
-	#${MAKEOPTS} ${myconf} CFLAGS="${CFLAGS}" || die "scons failed"
-#}
 src_install() {
 	dodoc AUTHORS COPYING INSTALL README TODO 
 }
