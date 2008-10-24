@@ -10,7 +10,7 @@ SRC_URI="http://crunchyfrog.googlecode.com/files/crunchyfrog-${PV}.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="mysql sqlite3 ldap postgresql mssql"
+IUSE="mysql sqlite3 ldap postgres mssql"
 RDEPEND="${DEPEND}
 	dev-python/libbonobo-python
 	dev-python/libgnomecanvas-python
@@ -30,7 +30,7 @@ RDEPEND="${DEPEND}
 	mysql? ( dev-db/mysql )
 	sqlite3? ( dev-python/pysqlite )
 	ldap? ( dev-python/python-ldap )
-	postgresql? ( >=dev-python/psycopg-2 )
+	postgres? ( >=dev-python/psycopg-2 )
 	mssql? ( dev-python/pymssql )"
 
 src_install() {
