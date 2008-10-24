@@ -7,7 +7,7 @@ inherit eutils
 DESCRIPTION="Database Frontend for GNOME"
 HOMEPAGE="http://cf.andialbrecht.de/"
 SRC_URI="http://crunchyfrog.googlecode.com/files/crunchyfrog-${PV}.tar.gz"
-LICENSE="MIT"
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
 IUSE="mysql sqlite3 ldap postgres mssql"
@@ -18,9 +18,9 @@ RDEPEND="${DEPEND}
 	dev-python/configobj
 	dev-python/gnome-keyring-python
 	dev-python/gnome-python-desktop-base
+	dev-python/gnome-python-base
 	dev-python/gtkmozembed-python
 	dev-python/gnome-python-extras-base
-	dev-python/gnome-python
 	dev-python/sexy-python
 	dev-python/dbus-python
 	dev-python/setuptools
