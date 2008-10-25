@@ -17,10 +17,7 @@ RDEPEND="${DEPEND}
 	dev-python/kiwi
 	dev-python/configobj
 	dev-python/gnome-keyring-python
-	dev-python/gnome-python-desktop-base
-	dev-python/gnome-python-base
 	dev-python/gtkmozembed-python
-	dev-python/gnome-python-extras-base
 	dev-python/sexy-python
 	dev-python/dbus-python
 	dev-python/setuptools
