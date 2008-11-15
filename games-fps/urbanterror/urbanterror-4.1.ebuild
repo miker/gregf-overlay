@@ -4,7 +4,9 @@
 
 inherit games 
 
+EAPI="1"
 HOMEPAGE="http://www.urbanterror.net/"
+DESCRIPTION="Quake III Urban Terror - total transformation realism based MOD"
 SRC_URI="
 	ftp://ftp.snt.utwente.nl/pub/games/urbanterror/UrbanTerror_41_FULL.zip
 	http://mirror.kickassctf.com/UrbanTerror_41_FULL.zip
@@ -13,15 +15,12 @@ SRC_URI="
 	http://mirror.ncsa.uiuc.edu/ut4/urbanterror/UrbanTerror_41_FULL.zip"
 
 LICENSE="freedist"
-SLOT="4"
+SLOT="0"
 RESTRICT="mirror strip"
 
 KEYWORDS="-* ~amd64 ~x86"
-DEPEND="
-        app-arch/unzip
-"
+DEPEND="app-arch/unzip"
 
-# this list was compiled according to "ldd ioUrbanTerror.i386"
 RDEPEND="
         sys-libs/glibc
         opengl? (
@@ -43,24 +42,19 @@ dir="${GAMES_PREFIX_OPT}/${PN}"
 Ddir="${D}/${dir}"
 
 src_unpack() {
-        unpack ${A}
+	unpack ${A}
 }
 
 src_install() {
 	exeinto ${dir}
-        doexe "UrbanTerror"/ioUrbanTerror.i386 || die "doexe ioUrT"
+		doexe "UrbanTerror"/ioUrbanTerror.i386 || die "doexe ioUrT"
 	insinto ${dir}
-  	doicon q3ut4/q3ut.ico
+	doicon q3ut4/q3ut.ico
 	
 	cp -r UrbanTerror/* "${Ddir}" || die "cp failed"
 
 	games_make_wrapper urbanterror ./ioUrbanTerror.i386 "${dir}" "${dir}"
-        make_desktop_entry urbanterror "UrbanTerror" UrT
-
+	make_desktop_entry urbanterror "UrbanTerror" UrT
 	prepgamesdirs
-        chmod g+rw "${Ddir}" "${Ddir}/ioUrbanTerror.i386"
-
+	chmod g+rw "${Ddir}" "${Ddir}/ioUrbanTerror.i386"
 }
-
-
-
