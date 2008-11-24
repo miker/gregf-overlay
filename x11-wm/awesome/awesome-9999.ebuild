@@ -13,7 +13,6 @@ EGIT_REPO_URI="git://git.naquadah.org/awesome.git"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~ppc64 ~x86 ~x86-fbsd"
-#IUSE="dbus doc +imlib bash-completion"
 IUSE="dbus doc +imlib"
 
 RDEPEND=">=dev-lang/lua-5.1
@@ -59,9 +58,6 @@ RDEPEND="${RDEPEND}
 		media-gfx/xli
 		x11-apps/xsetroot
 	)"
-#		media-gfx/qiv (media-gfx/pqiv doesn't work)
-#		x11-misc/chbg #68116
-#	bash-completion? ( app-shells/bash-completion )
 
 DOCS="AUTHORS BUGS PATCHES README STYLE"
 
