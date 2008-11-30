@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/x11-libs/cairo/cairo-1.8.2.ebuild,v 1.1 2008/10/31 20:45:54 cardoe Exp $
 
-inherit autotools eutils flag-o-matic git libtool
+inherit autotools eutils flag-o-matic git
 
 DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="http://cairographics.org/"
@@ -51,7 +51,6 @@ DEPEND="${RDEPEND}
 	xcb? ( x11-proto/xcb-proto )"
 
 src_compile() {
-	elibtoolize
 	eautoreconf
 	#gets rid of fbmmx.c inlining warnings
 	append-flags -finline-limit=1200
