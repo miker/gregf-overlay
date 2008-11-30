@@ -6,7 +6,6 @@ inherit autotools eutils flag-o-matic git libtool
 
 DESCRIPTION="A vector graphics library with cross-device output support"
 HOMEPAGE="http://cairographics.org/"
-#SRC_URI="http://cairographics.org/releases/${P}.tar.gz"
 EGIT_REPO_URI="git://git.cairographics.org/git/cairo"
 
 
@@ -52,8 +51,8 @@ DEPEND="${RDEPEND}
 	xcb? ( x11-proto/xcb-proto )"
 
 src_compile() {
-	eautoreconf
 	elibtoolize
+	eautoreconf
 	#gets rid of fbmmx.c inlining warnings
 	append-flags -finline-limit=1200
 
