@@ -51,23 +51,9 @@ DEPEND="${RDEPEND}
 	X? ( x11-proto/renderproto )
 	xcb? ( x11-proto/xcb-proto )"
 
-#pkg_setup() {
-#	if ! built_with_use app-text/poppler-bindings gtk ; then
-#		eerror 'poppler-bindings with gtk is required for the pdf backend'
-#		die 'poppler-bindings built without gtk support'
-#	fi
-#}
-
-src_unpack() {
-	unpack ${A}
-	cd "${S}"
-
-	# We need to run elibtoolize to ensure correct so versioning on FreeBSD
-	elibtoolize
-}
-
 src_compile() {
 	eautoreconf
+	elibtoolize
 	#gets rid of fbmmx.c inlining warnings
 	append-flags -finline-limit=1200
 
