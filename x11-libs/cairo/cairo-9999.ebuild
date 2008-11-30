@@ -51,7 +51,7 @@ DEPEND="${RDEPEND}
 	xcb? ( x11-proto/xcb-proto )"
 
 src_compile() {
-	eautoreconf
+	./autogen.sh
 	#gets rid of fbmmx.c inlining warnings
 	append-flags -finline-limit=1200
 
