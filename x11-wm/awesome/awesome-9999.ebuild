@@ -48,10 +48,8 @@ RDEPEND="${RDEPEND}
 		x11-apps/xmessage
 	)
 	|| (
-		x11-terms/eterm
 		x11-wm/windowmaker
 		media-gfx/feh
-		x11-misc/hsetroot
 		( media-gfx/imagemagick x11-apps/xwininfo )
 		media-gfx/xv
 		x11-misc/xsri
