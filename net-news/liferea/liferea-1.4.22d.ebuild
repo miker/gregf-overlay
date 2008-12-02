@@ -85,8 +85,6 @@ pkg_setup() {
 src_unpack() {
 	gnome2_src_unpack
 
-	epatch "${FILESDIR}"/${PN}-1.4.17-xulrunner-1.9.patch
-
 	intltoolize --force || die "intltoolize failed"
 	eautoreconf
 }
