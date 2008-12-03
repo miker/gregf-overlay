@@ -20,6 +20,7 @@ RDEPEND="media-libs/jpeg
 	media-libs/libsdl
 	media-libs/sdl-mixer
 	media-libs/sdl-ttf
+	media-libs/sdl-net
 	net-misc/curl
 	dev-lang/lua
 	dev-games/ode
