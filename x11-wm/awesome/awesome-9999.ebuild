@@ -9,6 +9,7 @@ inherit cmake-utils git
 DESCRIPTION="A dynamic floating and tiling window manager"
 HOMEPAGE="http://awesome.naquadah.org/"
 EGIT_REPO_URI="git://git.naquadah.org/awesome.git"
+EGIT_BRANCH="tasklist-gc"
 
 LICENSE="GPL-2"
 SLOT="0"
