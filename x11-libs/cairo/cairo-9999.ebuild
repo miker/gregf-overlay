@@ -46,6 +46,7 @@ DEPEND="${RDEPEND}
 				)"
 
 src_compile() {
+	./autogen.sh
 	#gets rid of fbmmx.c inlining warnings
 	append-flags -finline-limit=1200
 
