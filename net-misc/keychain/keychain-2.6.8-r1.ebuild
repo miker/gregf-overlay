@@ -2,6 +2,8 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/net-misc/keychain/keychain-2.6.8.ebuild,v 1.9 2008/03/02 13:15:50 philantrop Exp $
 
+inherit eutils
+
 DESCRIPTION="ssh-agent manager"
 HOMEPAGE="http://www.gentoo.org/proj/en/keychain/"
 SRC_URI="mirror://gentoo/${P}.tar.bz2"
