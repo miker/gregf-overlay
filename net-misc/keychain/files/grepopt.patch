@@ -1,0 +1,11 @@
+--- /usr/bin/keychain	2009-01-18 15:19:06.790064904 -0500
++++ /home/gregf/keychain	2009-01-18 15:18:51.000000000 -0500
+@@ -31,6 +31,8 @@
+ unset stopwhich
+ unset timeout
+ unset ssh_timeout
++unset grep_options
++unset GREP_OPTIONS
+ attempts=1
+ unset sshavail
+ unset sshkeys
