@@ -1,1 +1,6 @@
-# Masked packages here.
+# Package mask all live ebuilds.
+#
+
+x11-libs/cairo
+x11-wm/awesome
+app-admin/conky
