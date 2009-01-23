@@ -1,0 +1,28 @@
+--- gui/src/tarfile-ops-nt.cc.orig	2008-08-07 22:42:19.000000000 -0400
++++ gui/src/tarfile-ops-nt.cc	2008-08-07 22:46:55.000000000 -0400
+@@ -74,7 +74,7 @@
+ 		return index;
+ 	}
+ 
+-	int close_compressed(int fd)
++	int close_compressed(long int fd)
+ 	{
+ 		unsigned int ufd = fd;
+ 		assert( ufd < gzArraySize );
+@@ -83,14 +83,14 @@
+ 		return ret;
+ 	}
+ 
+-	ssize_t read_compressed(int fd, void *buf, size_t size)
++	ssize_t read_compressed(long int fd, void *buf, size_t size)
+ 	{
+ 		unsigned int ufd = fd;
+ 		assert( ufd < gzArraySize );
+ 		return gzread(gzHandles[ufd], buf, size);
+ 	}
+ 
+-	ssize_t write_compressed(int fd, const void *buf, size_t size)
++	ssize_t write_compressed(long int fd, const void *buf, size_t size)
+ 	{
+ 		unsigned int ufd = fd;
+ 		assert( ufd < gzArraySize );
