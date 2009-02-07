@@ -25,7 +25,7 @@ RDEPEND=">=dev-lang/lua-5.1
 	x11-libs/libX11
 	>=x11-libs/libxcb-1.1
 	x11-libs/pango
-	>=x11-libs/xcb-util-0.3
+	=x11-libs/xcb-util-9999
 	dbus? ( >=sys-apps/dbus-1 )
 	imlib? ( media-libs/imlib2 )
 	!imlib? ( >=x11-libs/gtk+-2.2 )"
