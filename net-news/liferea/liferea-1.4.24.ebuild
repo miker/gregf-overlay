@@ -83,7 +83,6 @@ src_unpack() {
 	gnome2_src_unpack
 
 	epatch "${FILESDIR}"/${P}-gecko.patch
-	epatch "${FILESDIR}"/${P}-webkit11.patch
 
 	intltoolize --force || die "intltoolize failed"
 	eautoreconf
