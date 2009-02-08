@@ -10,7 +10,7 @@ SRC_URI="http://www.netsw.org/system/tools/process/${P}.tar.gz"
 
 LICENSE="as-is"
 SLOT="0"
-KEYWORDS="~x86"
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND=""
