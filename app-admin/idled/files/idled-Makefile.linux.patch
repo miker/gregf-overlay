@@ -1,0 +1,101 @@
+--- Makefile.orig	2007-02-23 11:16:55.000000000 +0000
++++ Makefile	2007-02-23 13:48:30.000000000 +0000
+@@ -215,36 +215,9 @@
+ # SVR4  --  Solaris 2.x
+ # Use install3 for /usr/sbin/install
+ # and install1 for /usr/ucb/install
+-DEFS += -DSYSV -DHAVE_PROC_FS -DUTMPPID -DHAVE_SETSID -DHAVE_UTMPX -DUTMPHOST -DRUDEKILL
+-SPECLIBS = 
+-INSTTYPE = install3
+-
+-DEST    = /usr/local/bin
+-CFDEST  = /usr/local/lib
+-MDEST   = /usr/local/man
+-LOGDEST = /var/log
+-
+-OWNER   = root
+-CFOWNER = root
+-MOWNER  = root
+-
+-GROUP   = root
+-CFGROUP = root
+-
+-MODE    = 750
+-CFMODE  = 664
+-MMODE   = 644
+-
+-######################################################################
+-######################################################################
+-# Linux
+-# Note:  NOT all version of Linux have yyrestart().  Remove the
+-#        -DHAVE_YYRESTART if you have problems.
+-# You should do a 'make clean' before 'make', so that parse.c
+-# and scan.c will be created on your system.
+-#DEFS += -DSYSV -DUTMPPID -DUTMPHOST -DHAVE_SETSID -DHAVE_YYRESTART
++#DEFS += -DSYSV -DHAVE_PROC_FS -DUTMPPID -DHAVE_SETSID -DHAVE_UTMPX -DUTMPHOST -DRUDEKILL
+ #SPECLIBS = 
+-#INSTTYPE = install1
++#INSTTYPE = install3
+ #
+ #DEST    = /usr/local/bin
+ #CFDEST  = /usr/local/lib
+@@ -261,6 +234,34 @@
+ #MODE    = 750
+ #CFMODE  = 664
+ #MMODE   = 644
++#
++######################################################################
++######################################################################
++# Linux
++# Note:  NOT all version of Linux have yyrestart().  Remove the
++#        -DHAVE_YYRESTART if you have problems.
++# You should do a 'make clean' before 'make', so that parse.c
++# and scan.c will be created on your system.
++DEFS += -DSYSV -DUTMPPID -DUTMPHOST -DHAVE_SETSID -DHAVE_YYRESTART
++SPECLIBS = 
++INSTTYPE = install1
++
++DEST    = ${DESTDIR}/usr/bin
++CFDEST  = ${DESTDIR}/etc
++MDEST   = ${DESTDIR}/usr/share/man
++LOGDEST = ${DESTDIR}/var/log
++
++OWNER   = root
++CFOWNER = root
++MOWNER  = root
++
++GROUP   = root
++CFGROUP = root
++
++MODE    = 750
++CFMODE  = 664
++MMODE   = 644
++IMODE   = 755
+ 
+ ######################################################################
+ ######################################################################
+@@ -469,14 +470,16 @@
+ # BSD machines in general prefer install1
+ # Solaris 2.x using /usr/ucb/install also uses install1
+ install1: all 
+-	install -c -m ${MODE} -o ${OWNER} -g ${GROUP} ${BINARY} ${DEST}
+-	install -c -m ${CFMODE} -o ${CFOWNER} -g ${CFGROUP} ${COMMFILE}.template ${CFDEST}
+-	install -c -m ${MMODE} -o ${MOWNER} ${CFMAN} ${MDEST}/man5
+-	install -c -m ${MMODE} -o ${MOWNER} ${PMAN} ${MDEST}/man8
+-	@echo ""
+-	@echo "Be sure to edit/create the file ${CONFIG} based on"
+-	@echo "the needs for your system. The ${CONFIG}.template"
+-	@echo "file can serve as a guide, as well as the man pages."
++	install -m ${MODE} -o ${OWNER} -g ${GROUP} -d ${DEST}
++	install -m ${MODE} -o ${OWNER} -g ${GROUP} ${BINARY} ${DEST}
++	install -m ${CFMODE} -o ${CFOWNER} -g ${CFGROUP} -d ${CFDEST}
++	install -m ${CFMODE} -o ${CFOWNER} -g ${CFGROUP} -d ${CFDEST}/init.d
++	install -m ${IMODE} -o ${CFOWNER} -g ${CFGROUP} init.${BINARY} ${CFDEST}/init.d/${BINARY}
++	install -m ${CFMODE} -o ${CFOWNER} -g ${CFGROUP} ${COMMFILE}.template ${CFDEST}
++	install -m ${MMODE} -o ${MOWNER} -d ${MDEST}/man5
++	install -m ${MMODE} -o ${MOWNER} ${CFMAN} ${MDEST}/man5
++	install -m ${MMODE} -o ${MOWNER} -d ${MDEST}/man8
++	install -m ${MMODE} -o ${MOWNER} ${PMAN} ${MDEST}/man8
+ 
+ # BSD like, but with some enhancements like: install -s -> strip binary
+ #                                            gzip manual pages

@@ -1,0 +1,23 @@
+--- init.idled.org	2007-02-23 12:23:53.000000000 +0000
++++ init.idled	2007-02-23 13:29:22.000000000 +0000
+@@ -0,0 +1,20 @@
++#!/sbin/runscript
++#
++# kindly provided by Eric Schorr
++
++#opts="${opts} reload"
++
++start() {
++	ebegin "Starting Idled"
++	/usr/bin/idled
++	eend $?
++}
++
++stop() {
++	ebegin "Stopping Idled"
++	pid=`/bin/ps -e | /bin/grep idled | /usr/bin/sed -e 's/^  *//' -e 's/ .*//'`
++	if [ "$pid" != "" ]; then
++		/bin/kill $pid
++	fi
++	eend $?
++}
