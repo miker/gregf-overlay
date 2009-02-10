@@ -17,7 +17,12 @@ S=${WORKDIR}
 DOCS="LICENSE"
 
 src_unpack() {
-	epatch "${FILESDIR}"/feedparser_utf8_decoding.patch
+	gnome2_src_unpack
+
+	epatch "${FILESDIR}"/${P}-gecko.patch
+
+	intltoolize --force || die "intltoolize failed"
+	eautoreconf
 }
 
 src_install() {
