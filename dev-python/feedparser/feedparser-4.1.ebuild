@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: /var/cvsroot/gentoo-x86/dev-python/feedparser/feedparser-4.1.ebuild,v 1.12 2008/05/11 16:45:55 corsair Exp $
 
-inherit distutils eutils
+inherit distutils eutils autotools
 
 DESCRIPTION="Parse RSS and Atom feeds in Python"
 HOMEPAGE="http://www.feedparser.org/"
@@ -17,9 +17,7 @@ S=${WORKDIR}
 DOCS="LICENSE"
 
 src_unpack() {
-	gnome2_src_unpack
-
-	epatch "${FILESDIR}"/${P}-gecko.patch
+	epatch "${FILESDIR}"/feedparser_utf8_decoding.patch
 
 	intltoolize --force || die "intltoolize failed"
 	eautoreconf
