@@ -1,5 +1,5 @@
---- /var/lib/python-support/python2.5/feedparser.py	2008-01-23 20:10:27.000000000 +0100
-+++ feedparser.py	2008-07-28 11:01:38.000000000 +0200
+--- trunk.orig/feedparser.py
++++ trunk/feedparser.py
 @@ -1455,7 +1455,7 @@
          # thanks to Kevin Marks for this breathtaking hack to deal with (valid) high-bit attribute values in UTF-8 feeds
          for key, value in attrs:
