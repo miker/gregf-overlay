@@ -1,6 +1,5 @@
-
---- trunk.orig/feedparser.py
-+++ trunk/feedparser.py
+--- feedparser.py	2009-02-10 13:31:15.000000000 -0500
++++ feedparser.py.new	2009-02-10 13:31:39.000000000 -0500
 @@ -1455,7 +1455,7 @@
          # thanks to Kevin Marks for this breathtaking hack to deal with (valid) high-bit attribute values in UTF-8 feeds
          for key, value in attrs:
@@ -10,4 +9,3 @@
              uattrs.append((unicode(key, self.encoding), value))
          strattrs = u''.join([u' %s="%s"' % (key, value) for key, value in uattrs]).encode(self.encoding)
          if tag in self.elements_no_end_tag:
-

@@ -17,10 +17,9 @@ S=${WORKDIR}
 DOCS="LICENSE"
 
 src_unpack() {
-	epatch "${FILESDIR}"/feedparserutf8decoding.patch
-
-	intltoolize --force || die "intltoolize failed"
-	eautoreconf
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/${P}-utf8-decoding.patch
 }
 
 src_install() {
