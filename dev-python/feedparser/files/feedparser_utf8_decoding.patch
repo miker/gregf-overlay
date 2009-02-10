@@ -1,3 +1,4 @@
+
 --- trunk.orig/feedparser.py
 +++ trunk/feedparser.py
 @@ -1455,7 +1455,7 @@
@@ -9,3 +10,4 @@
              uattrs.append((unicode(key, self.encoding), value))
          strattrs = u''.join([u' %s="%s"' % (key, value) for key, value in uattrs]).encode(self.encoding)
          if tag in self.elements_no_end_tag:
+
