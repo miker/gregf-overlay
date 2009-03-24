@@ -1,0 +1,13 @@
+--- cf/ui/refviewer.py.orig	2008-11-24 09:32:40.000000000 +0200
++++ cf/ui/refviewer.py		2008-12-02 14:27:16.383097763 +0200
+@@ -138,3 +138,10 @@
+     def load_url(self, url):
+         self.xml.get_widget("refviewer_entry_url").set_text(url)
+         self.browser.load_url(url)
++
++
++ReferenceViewer.INIT_ERROR = None
++try:
++    import gtkmozembed
++except ImportError:
++    ReferenceViewer.INIT_ERROR = _(u"Python module gtkmozembed not found.")
