@@ -10,7 +10,7 @@ HOMEPAGE="http://www.grinninglizard.com/tinyxml/index.html"
 SRC_URI="mirror://sourceforge/${PN}/${PN}${MY_PV}.tar.gz"
 
 LICENSE="GPL-2"
-KEYWORDS="~x86"
+KEYWORDS="~x86 ~amd64"
 SLOT="0"
 IUSE="debug"
 
