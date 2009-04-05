@@ -2,20 +2,22 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="2"
+
 inherit eutils toolchain-funcs games
 
 MY_PN=Nexuiz
 MY_P=${PN}-${PV//./}
 MAPS=nexmappack_r2
 DESCRIPTION="Deathmatch FPS based on DarkPlaces, an advanced Quake 1 engine"
-HOMEPAGE="http://www.nexuiz.com/"
+HOMEPAGE="http://alientrap.org/nexuiz/"
 SRC_URI="mirror://sourceforge/${PN}/${MY_P}.zip
 	maps? ( mirror://sourceforge/${PN}/${MAPS}.zip )"
 
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="alsa dedicated maps opengl sdl"
+IUSE="alsa dedicated +maps +opengl +sdl"
 
 UIRDEPEND="media-libs/libogg
 	media-libs/libvorbis
@@ -27,7 +29,7 @@ UIRDEPEND="media-libs/libogg
 	x11-libs/libXxf86vm
 	virtual/opengl
 	alsa? ( media-libs/alsa-lib )
-	sdl? ( media-libs/libsdl )"
+	sdl? ( media-libs/libsdl[X,opengl] )"
 UIDEPEND="x11-proto/xextproto
 	x11-proto/xf86dgaproto
 	x11-proto/xf86vidmodeproto
@@ -55,23 +57,25 @@ src_unpack() {
 		cd "${WORKDIR}"/${MY_PN}
 		unpack ${MAPS}.zip
 	fi
+}
 
-	cd "${S}"
+src_prepare() {
 	# Make the game automatically look in the correct data directory
 	sed -i \
 		-e "/^CC=/s:gcc:$(tc-getCC):" \
 		-e "s:-O2:${CFLAGS}:" \
 		-e "/-lm/s:$: ${LDFLAGS}:" \
 		-e 's/strip/true/' \
-		makefile.inc \
-		|| die "sed makefile.inc failed"
+		makefile.inc || die "sed makefile.inc failed"
 
-	sed -i "s:ifdef DP_.*:DP_FS_BASEDIR=${GAMES_DATADIR}/nexuiz\n&:" makefile \
-		|| die "sed makefile failed"
+	sed -i \
+		-e "s:ifdef DP_.*:DP_FS_BASEDIR=${GAMES_DATADIR}/${PN}\n&:" \
+		makefile || die "sed makefile failed"
 
 	if ! use alsa ; then
-		sed -i "/DEFAULT_SNDAPI/s:ALSA:OSS:" makefile \
-			|| die "sed makefile failed"
+		sed -i \
+			-e "/DEFAULT_SNDAPI/s:ALSA:OSS:" \
+			makefile || die "sed makefile failed"
 	fi
 }
 
@@ -108,8 +112,12 @@ src_install() {
 
 	cd "${WORKDIR}"/${MY_PN}
 
-	dodoc Docs/*.txt
-	dohtml Docs/*.{htm,html}
+	dodoc Docs/*.txt || die "dodoc failed"
+	dohtml Docs/*.{htm,html} || die "dohtml failed"
+	insinto "/usr/share/doc/${PF}/html/"
+	pushd Docs/ > /dev/null
+	doins -r htmlfiles || die "doins additonal html files failed"
+	popd > /dev/null
 
 	insinto "${GAMES_DATADIR}"/${PN}
 
@@ -122,4 +130,3 @@ src_install() {
 
 	prepgamesdirs
 }
-
