@@ -16,11 +16,11 @@ SRC_URI="http://www.teeworlds.com/files/${P}-src.tar.gz -> ${P}-src.tar.gz
 LICENSE="as-is"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="dedicated"
+IUSE="debug dedicated instagib"
 
 RDEPEND="dev-lang/lua
 	!dedicated? (
-		media-libs/libsdl[X,alsa,opengl]
+		media-libs/libsdl[X,opengl]
 		sys-libs/zlib
 	)"
 # has modified wavpack and pnglite in its sources
@@ -34,6 +34,16 @@ dir=${GAMES_DATADIR}/${PN}
 
 src_prepare() {
 	rm -f license.txt
+	epatch "${FILESDIR}"/fix_datadir_search.patch
+	if use instagib ; then
+		epatch  "${FILESDIR}"/instagib-2.2.patch
+	fi
+}
+
+pkg_setup() {
+	dodir /etc/${P}
+	enewgroup games
+	enewuser teeworlds -1 -1 -1 games
 }
 
 src_compile() {
@@ -51,26 +61,32 @@ src_compile() {
 	# compile game
 	cd "${S}"
 	sed -i \
-		-e "s|cc.flags = \"-Wall -pedantic-errors\"|cc.flags = \"${CXXFLAGS}\"|" \
-		-e "s|linker.flags = \"\"|linker.flags = \"${LDFLAGS}\"|" \
-		-e "s|-Wall -fstack-protector -fstack-protector-all -fno-exceptions|${CXXFLAGS}|" \
+		-e "s|Add(\"-Wall\", \"-fno-exceptions|Add(\"|" \
+		-e "s|cc.flags:Add(\"-fstack-protector\", \"-fstack-protector-all\")|cc.flags:Add(\"${CXXFLAGS}\")|" \
+		-e "s|link.flags:Add(\"-fstack-protector\", \"-fstack-protector-all\")|link.flags:Add(\"${LDFLAGS}\")|" \
 		default.bam || die "sed failed"
 
-	if use dedicated ; then
-		../${BAM_P}/src/bam -v server_release || die "bam failed"
-	else
-		../${BAM_P}/src/bam -v release || die "bam failed"
-	fi
+	local opts=""
+	use dedicated && opts="server_"
+	use debug && opts="${opts}debug" || opts="${opts}release"
+
+	../${BAM_P}/src/bam -v ${opts}
 }
 
 src_install() {
-	exeinto "${dir}"
-	doexe ${PN}_srv || die "dogamesbin failed"
+	if use debug ; then
+		newgamesbin ${PN}_srv_d ${PN}_srv || "newgamesbin failed"
+	else
+		dogamesbin ${PN}_srv || die "dogamesbin failed"
+	fi
 
 	if ! use dedicated ; then
-		doexe ${PN} || die "dogamesbin failed"
+		if use debug ; then
+			newgamesbin ${PN}_d ${PN} || die "newgamesbin failed"
+		else
+			dogamesbin ${PN} || die "dogamesbin failed"
+		fi
 		newicon other/icons/Teeworlds.ico ${PN}.ico
-		games_make_wrapper ${PN} "./${PN}" "${dir}"
 	    make_desktop_entry ${PN} "Teeworlds"
 		insinto "${dir}"
 		doins -r data || die "doins failed"
@@ -81,4 +97,6 @@ src_install() {
 
 	dodoc *.txt
 	prepgamesdirs
+	newinitd "${FILESDIR}"/teeworlds_init teeworlds
 }
+
