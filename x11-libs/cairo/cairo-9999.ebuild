@@ -66,6 +66,7 @@ src_unpack() {
 
 	# We need to run elibtoolize to ensure correct so versioning on FreeBSD
 	elibtoolize
+	./autogen.sh
 }
 
 src_compile() {
