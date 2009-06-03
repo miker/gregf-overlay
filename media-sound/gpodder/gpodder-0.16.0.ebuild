@@ -28,6 +28,11 @@ DEPEND="${RDEPEND}
 	media-gfx/imagemagick[png]
 	sys-apps/help2man"
 
+src_unpack(){
+	unpack ${A}
+	cd "${S}"
+	epatch "${FILESDIR}"/0001-Include-a-custom-version-of-redirect_internal-in-Dow.patch || die "epatch for SConstruct failed"
+}
 src_compile() {
 	emake generators || die
 	emake messages || die
