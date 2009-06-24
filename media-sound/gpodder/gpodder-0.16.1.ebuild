@@ -28,12 +28,6 @@ DEPEND="${RDEPEND}
 	media-gfx/imagemagick[png]
 	sys-apps/help2man"
 
-src_unpack(){
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/gpodder-downloadhangs.patch || die "epatch for SConstruct failed"
-}
-
 src_compile() {
 	emake generators || die
 	emake messages || die
