@@ -8,7 +8,7 @@ inherit git
 
 EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
 
-DESCRIPTION="…a keyboard controlled (modal vim-like bindings, or with modifierkeys) browser based on Webkit."
+DESCRIPTION="a keyboard controlled (modal vim-like bindings, or with modifierkeys) browser based on Webkit."
 HOMEPAGE="http://www.uzbl.org"
 SRC_URI=""
 
@@ -35,7 +35,7 @@ src_unpack() {
 	cd "${S}"
 }
 
-compile() {
+src_compile() {
 	emake || die "compile failed"
 }
 
