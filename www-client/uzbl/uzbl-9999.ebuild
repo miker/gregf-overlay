@@ -6,11 +6,9 @@ EAPI=2
 
 inherit git
 
-EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
-
 DESCRIPTION="a keyboard controlled (modal vim-like bindings, or with modifierkeys) browser based on Webkit."
 HOMEPAGE="http://www.uzbl.org"
-SRC_URI=""
+EGIT_REPO_URI="git://github.com/Dieterbe/uzbl.git"
 
 LICENSE="|| ( LGPL-2.1 MPL-1.1 )"
 SLOT="0"
