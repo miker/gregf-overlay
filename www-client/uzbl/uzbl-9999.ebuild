@@ -26,23 +26,20 @@ RDEPEND=">=net-libs/webkit-gtk-1.1.7
         zenity? (
         gnome-extra/zenity
         )"
-
 DEPEND="${RDEPEND}
     >=dev-util/pkgconfig-0.19
     "
 
 src_unpack() {
-    git_src_unpack
-    cd "${S}"
-
+	git_src_unpack
+	cd "${S}"
 }
 
-src_compile() {
-
-    emake || die "compile failed"
+compile() {
+	emake || die "compile failed"
 }
 
 src_install() {
-    emake DESTDIR="${D}" install || die "Installation failed"
-    dodoc AUTHORS README
+	emake DESTDIR="${D}" install || die "Installation failed"
+	dodoc AUTHORS README
 }
