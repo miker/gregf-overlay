@@ -2,7 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: uzbl-9999.ebuild by Karol Czeryna
 
-EAPI="2"
+EAPI=2
 
 inherit git
 
