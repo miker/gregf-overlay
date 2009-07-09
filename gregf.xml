@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<layman>
+<overlays>
+<overlay type="git" src="git://github.com/gregf/gregf-overlay.git" name="gregf" status="unofficial" contact="netzdamon@gmail.com">
+  <description>My personal stash of ebuilds, who knows what will be working.</description>
+  <link>http://github.com/gregf/gregf-overlay/tree/master</link>
+</overlay>
+</overlays>
+</layman>
