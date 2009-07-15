@@ -1,4 +1,2 @@
 # Package mask all live ebuilds.
 #
-
-app-admin/conky-1.999
