@@ -1,10 +1,11 @@
 # Copyright 1999-2008 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header$
+
+EAPI=2
 
 WANT_PYTHON=2.5
-inherit python eutils multilib
 
+inherit python eutils multilib
 DESCRIPTION="Database navigator and query tool for GNOME"
 HOMEPAGE="http://cf.andialbrecht.de/"
 SRC_URI="http://crunchyfrog.googlecode.com/files/${P}.tar.gz"
@@ -35,12 +36,19 @@ RDEPEND="
 src_unpack() {
 	unpack ${A}
 	cd "${S}"
-	epatch "${FILESDIR}"/refviewer-init-error.patch
 	sed -e "s:\(GTKMOZEMBED_PATH\)=:\1 ?= :" -i Makefile
 }
 
 src_compile() {
 	export GTKMOZEMBED_PATH=/usr/$(get_libdir)/firefox
+
+	if use refviewer; then
+		if built_with_use dev-python/gtkmozembed-python xulrunner; then
+			GTKMOZEMBED_PATH=/usr/$(get_libdir)/xulrunner-1.9
+		elif built_with_use dev-python/gtkmozembed-python seamonkey; then
+			GTKMOZEMBED_PATH=/usr/$(get_libdir)/seamonkey
+		fi
+	fi
 
 	emake || die "make failed"
 }
