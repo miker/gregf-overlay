@@ -1,7 +1,4 @@
 # Package mask all live ebuilds.
 #
 
-x11-libs/cairo
-x11-wm/awesome
-x11-libs/xcb-util
-app-admin/conky
+app-admin/conky-1.999
