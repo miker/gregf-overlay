@@ -1,2 +1,3 @@
 # Package mask all live ebuilds.
 #
+=net-misc/keychain-9999
