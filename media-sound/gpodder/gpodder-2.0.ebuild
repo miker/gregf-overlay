@@ -11,7 +11,7 @@ SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipod libnotify mad ogg bluetooth mtp gtkhtml rockbox"
+IUSE="ipod libnotify mad ogg bluetooth mtp gtkhtml rockbox dbus"
 RESTRICT="test"
 
 RDEPEND="dev-python/feedparser
@@ -21,6 +21,7 @@ RDEPEND="dev-python/feedparser
 	>=dev-python/pysqlite-2.4
 	dev-python/eyeD3
 	dev-python/gtkhtml-python
+	dbus? ( dev-python/dbus-python )
 	bluetooth? ( dev-python/pybluez )
 	gtkhtml? ( dev-python/gtkhtml-python )
 	mtp? ( dev-python/pymtp )
