@@ -1,6 +1,5 @@
 # Copyright 1999-2009 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-sound/gpodder/gpodder-0.15.2.ebuild,v 1.1 2009/05/31 23:54:32 hanno Exp $
 
 EAPI=2
 
@@ -12,7 +11,7 @@ SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipod libnotify mad"
+IUSE="ipod libnotify mad bluetooth mtp gtkhtml"
 RESTRICT="test"
 
 RDEPEND="dev-python/feedparser
@@ -21,6 +20,10 @@ RDEPEND="dev-python/feedparser
 	libnotify? ( dev-python/notify-python )
 	>=dev-python/pysqlite-2.4
 	dev-python/eyeD3
+	dev-python/gtkhtml-python
+	bluetooth? ( dev-python/pybluez )
+	gtkhtml? ( dev-python/gtkhtml-python )
+	mtp? ( dev-python/pymtp )
 	ipod? ( media-libs/libgpod[python] )
 	mad? ( dev-python/pymad )"
 DEPEND="${RDEPEND}
@@ -28,11 +31,6 @@ DEPEND="${RDEPEND}
 	media-gfx/imagemagick[png]
 	sys-apps/help2man"
 
-src_unpack(){
-	unpack ${A}
-	cd "${S}"
-	epatch "${FILESDIR}"/0001-Include-a-custom-version-of-redirect_internal-in-Dow.patch || die "epatch for SConstruct failed"
-}
 src_compile() {
 	emake generators || die
 	emake messages || die
