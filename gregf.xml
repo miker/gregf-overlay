@@ -1,9 +1,7 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <layman>
-<overlays>
-<overlay type="git" src="git://github.com/gregf/gregf-overlay.git" name="gregf" status="unofficial" contact="netzdamon@gmail.com">
-  <description>My personal stash of ebuilds, who knows what will be working.</description>
-  <link>http://github.com/gregf/gregf-overlay/tree/master</link>
-</overlay>
-</overlays>
+  <overlay contact="netzdamon@gmail.com" name="gregf" src="git://github.com/gregf/gregf-overlay.git" status="unofficial" type="git">
+    <link>http://github.com/gregf/gregf-overlay/tree/master</link>
+    <description>gregf overlay</description>
+  </overlay>
 </layman>
