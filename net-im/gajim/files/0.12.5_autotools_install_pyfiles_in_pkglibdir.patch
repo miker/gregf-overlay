@@ -1,0 +1,52 @@
+Index: gajim-0.12.5/scripts/gajim.in
+===================================================================
+--- gajim-0.12.5.orig/scripts/gajim.in
++++ gajim-0.12.5/scripts/gajim.in
+@@ -32,6 +32,6 @@ fi
+ export datadir=@DATADIR@/gajim
+ PYTHON_EXEC=@PYTHON@
+ 
+-cd ${datadir}/src
++cd @LIBDIR@/gajim
+ export PYTHONPATH="$PYTHONPATH:@LIBDIR@/gajim"
+ exec ${PYTHON_EXEC} -OO $APP.py "$@"
+Index: gajim-0.12.5/src/Makefile.am
+===================================================================
+--- gajim-0.12.5.orig/src/Makefile.am
++++ gajim-0.12.5/src/Makefile.am
+@@ -43,18 +43,18 @@ trayicon.c: 
+ 		    --override $(srcdir)/trayicon.override \
+ 		    $(srcdir)/trayicon.defs > $@
+ endif
+-gajimsrcdir = $(pkgdatadir)/src
++gajimsrcdir = $(pkglibdir)
+ gajimsrc_PYTHON = $(srcdir)/*.py 
+ 
+-gajimsrc1dir = $(pkgdatadir)/src/common
++gajimsrc1dir = $(pkglibdir)/common
+ gajimsrc1_PYTHON = \
+ 				$(srcdir)/common/*.py 
+ 
+-gajimsrc2dir = $(pkgdatadir)/src/common/xmpp
++gajimsrc2dir = $(pkglibdir)/common/xmpp
+ gajimsrc2_PYTHON = \
+ 				$(srcdir)/common/xmpp/*.py 
+ 
+-gajimsrc3dir = $(pkgdatadir)/src/common/zeroconf
++gajimsrc3dir = $(pkglibdir)/common/zeroconf
+ gajimsrc3_PYTHON = \
+ 				$(srcdir)/common/zeroconf/*.py 
+ 
+Index: gajim-0.12.5/data/Makefile.am
+===================================================================
+--- gajim-0.12.5.orig/data/Makefile.am
++++ gajim-0.12.5/data/Makefile.am
+@@ -5,7 +5,7 @@ desktopdir = $(datadir)/applications
+ desktop_in_files = gajim.desktop.in.in 
+ desktop_DATA = $(desktop_in_files:.desktop.in.in=.desktop)
+ 
+-installdefsdir = $(pkgdatadir)/src/common
++installdefsdir = $(pkglibdir)/common
+ installdefs_DATA = defs.py
+ 
+ soundsdir = $(pkgdatadir)/data/sounds
