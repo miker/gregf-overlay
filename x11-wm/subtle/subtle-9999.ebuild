@@ -17,8 +17,8 @@ RDEPEND="x11-libs/libX11
          dev-lang/ruby"
 DEPEND="${RDEPEND}
         >=sys-devel/gcc-4.3
-        dev-util/mercurial
-        dev-ruby/rake"
+        dev-util/mercurial"
+		#dev-ruby/rake I use gem install rake don't want this being pulled in.
 S="${WORKDIR}/${PN}"
 
 
