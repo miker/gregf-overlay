@@ -11,7 +11,7 @@ SRC_URI="mirror://berlios/${PN}/${P}.tar.gz"
 LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="ipod libnotify mad"
+IUSE="ipod libnotify mad ogg bluetooth mtp gtkhtml rockbox dbus"
 RESTRICT="test"
 
 RDEPEND="dev-python/feedparser
@@ -20,8 +20,15 @@ RDEPEND="dev-python/feedparser
 	libnotify? ( dev-python/notify-python )
 	>=dev-python/pysqlite-2.4
 	dev-python/eyeD3
+	dev-python/gtkhtml-python
+	dbus? ( dev-python/dbus-python )
+	bluetooth? ( dev-python/pybluez )
+	gtkhtml? ( dev-python/gtkhtml-python )
+	mtp? ( dev-python/pymtp )
 	ipod? ( media-libs/libgpod[python] )
-	mad? ( dev-python/pymad )"
+	mad? ( dev-python/pymad )
+	rockbox? ( dev-python/imaging )
+	ogg? ( media-sound/vorbis-tools )"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	media-gfx/imagemagick[png]
