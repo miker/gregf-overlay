@@ -15,7 +15,7 @@ IUSE="ogg flac gstreamer"
 
 RDEPEND="app-cdr/cdrdao
 		 media-sound/sox[mad]
-		 media-sound/normalize
+		 media-sound/normalize[mad]
 		 ogg? ( media-sound/vorbis-tools )
 		 flac? ( media-libs/flac )
 		 gstreamer? ( media-libs/gst-plugins-good )" 
