@@ -28,7 +28,7 @@ RDEPEND="dev-python/feedparser
     mad? ( dev-python/pymad )
     rockbox? ( dev-python/imaging )
     ogg? ( media-sound/vorbis-tools )
-    dev-python/mygpoclient"
+    =dev-python/mygpoclient-1.1"
 DEPEND="${RDEPEND}
     dev-util/intltool
     media-gfx/imagemagick[png]
